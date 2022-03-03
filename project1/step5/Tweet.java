@@ -4,9 +4,9 @@ import java.io.File;
 /**
 This is Tweet Class
 This is a linked list node that contains Strings text, user, and date of a tweet
-
-@author Nguyen, Kenneth
 */
+
+
 public class Tweet{
     
     private String text, user;
@@ -81,6 +81,7 @@ public class Tweet{
                 
                 //Make tweet and add to queue
                 tweetList.enqueue( Tweet.makeTweet(line) ); 
+                
                 
             }
             

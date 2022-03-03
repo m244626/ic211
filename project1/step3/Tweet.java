@@ -4,9 +4,9 @@ import java.io.File;
 /**
 This is Tweet Class
 This is a linked list node that contains Strings text, user, and date of a tweet
-
-@author Nguyen, Kenneth
 */
+
+
 public class Tweet{
     
     private String text, user;
@@ -82,6 +82,7 @@ public class Tweet{
                 //Make tweet and add to queue
                 tweetList.enqueue( Tweet.makeTweet(line) ); 
                 
+                
             }
             
             //Return Queue
@@ -106,28 +107,6 @@ public class Tweet{
     boolean containsKeyword(String keyword){
         //Converts text to lowercase and checks if keyword is in it
         return ( this.text.toLowerCase() ).contains( keyword.toLowerCase() );
-        
-    }
-    
-    /**
-    Method checks to see if the tweet's timestamp is equal to String date
-    
-    @param inputDate String date YYYY-MM-DD
-    @return boolean True if date is equal to tweet's timestamp; False if else
-    */
-    boolean containsDate (String inputDate){
-        
-        //Converts String date to int
-            //Splits newdate by '-'
-        String[] temp = inputDate.split("-");
-        
-            //Converts each part of newdate to int and save
-        int dateYear  = Integer.parseInt( temp[0] );
-        int dateMonth = Integer.parseInt( temp[1] );
-        int dateDay   = Integer.parseInt( temp[2] ); 
-        
-        //Compares input date to tweet date
-        return (dateYear == this.year && dateMonth == this.month && dateDay == this.day);
         
     }
     

@@ -141,6 +141,64 @@ public class Queue{
         
         
     }
+    
+    /**
+    Traverses a Queue (via instanc) and 
+    makes a new Queue that contains tweets with String keyword
+    
+    @param keyword String that new Queue's tweets must contain
+    @return Queue New Queue with tweets that contain keyword
+    */
+    Queue filterForKeyword(String keyword){
+        
+        //Makes a new Queue
+        Queue outputQueue = new Queue();
+        
+        //Iterates through the instance queue
+        for (Node temp = this.head; temp != null; temp = temp.next){
+            
+            //If tweet contains keyword
+            if (temp.data.containsKeyword(keyword) ){
+                
+                //Add the tweet to the outputQueue
+                outputQueue.enqueue(temp.data);
+            }
+        }
+        
+        //Returns Queue
+        return outputQueue;
+        
+    }
+    
+    /**
+    Traverses a Queue (via instanc) and 
+    makes a new Queue that does not contain tweets with String keyword
+    
+    @param keyword String that new Queue's tweets must not contain
+    @return Queue New Queue with tweets that contain keyword
+    */
+    Queue filterForNotKeyword(String keyword){
+        
+        //Makes a new Queue
+        Queue outputQueue = new Queue();
+        
+        //Iterates through the instance queue
+        for (Node temp = this.head; temp != null; temp = temp.next){
+            
+            //If tweet does not contains keyword
+            if (! (temp.data.containsKeyword(keyword)) ){
+                
+                //Add the tweet to the outputQueue
+                outputQueue.enqueue(temp.data);
+            }
+        }
+        
+        //Returns Queue
+        return outputQueue;
+    
+    }
+    
+    
 }
 
 

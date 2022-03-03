@@ -2,8 +2,10 @@ import java.util.*;
 
 
 /**
-This is the Queue class
+This is the Queue class.
+It simplies link lists by remembering the head and tail of a link list.
 
+@author Nguyen, Kenneth
 */
 public class Queue{    
 
@@ -48,18 +50,14 @@ public class Queue{
         //Else, list is not empty (at least 1)
         else{
             
-            //Gets temp = end node by iterating through linked list 
-                //  until node.next is null (end node has next value of null)
-            Node temp;
-            for ( temp = this.head; temp.next != null; temp = temp.next){
-                //Pass
-            }
-
-            //Adds a new node to end Node temp
-            temp.next = new Node( t, null );;
-
-            //Sets tail to the node
-            this.tail = temp.next;
+            //Makes the node
+            Node temp = new Node( t, null);
+            
+            //Adds the Node to end
+            this.tail.next = temp;
+            
+            //Sets Node to be the tail
+            this.tail = temp;
         }
         
     }
@@ -94,8 +92,7 @@ public class Queue{
         
         //If head is empty, return nothing
         return null;
-        
-        
+       
     }
 
     /**
@@ -121,6 +118,10 @@ public class Queue{
     */
     public int length(){
         
+        if (this.head == null){
+            return 0;
+        }
+        
         //Counter to store number of nodes
         int count = 1;
         
@@ -143,7 +144,89 @@ public class Queue{
             System.out.println(temp.data);
         }
         
+    }
+    
+    /**
+    Traverses a Queue (via instanc) and 
+    makes a new Queue that contains tweets with String keyword
+    
+    @param keyword String that new Queue's tweets must contain
+    @return Queue New Queue with tweets that contain keyword
+    */
+    Queue filterForKeyword(String keyword){
         
+        //Makes a new Queue
+        Queue outputQueue = new Queue();
+        
+        //Iterates through the instance queue
+        for (Node temp = this.head; temp != null; temp = temp.next){
+            
+            //If tweet contains keyword
+            if (temp.data.containsKeyword(keyword) ){
+                
+                //Add the tweet to the outputQueue
+                outputQueue.enqueue(temp.data);
+            }
+        }
+        
+        //Returns Queue
+        return outputQueue;
+        
+    }
+    
+    /**
+    Traverses a Queue (via instanc) and 
+    makes a new Queue that does not contain tweets with String keyword
+    
+    @param keyword String that new Queue's tweets must not contain
+    @return Queue New Queue with tweets that contain keyword
+    */
+    Queue filterForNotKeyword(String keyword){
+        
+        //Makes a new Queue
+        Queue outputQueue = new Queue();
+        
+        //Iterates through the instance queue
+        for (Node temp = this.head; temp != null; temp = temp.next){
+            
+            //If tweet does not contains keyword
+            if (! (temp.data.containsKeyword(keyword)) ){
+                
+                //Add the tweet to the outputQueue
+                outputQueue.enqueue(temp.data);
+            }
+        }
+        
+        //Returns Queue
+        return outputQueue;
+    
+    }
+    
+    /**
+    Traverses a Queue (via instanc) and 
+    makes a new Queue that does contains tweets on given date
+    
+    @param date String date YYYY-MM-DD
+    @return Queue New Queue with tweets on given date
+    */
+    Queue filterForDate(String date){
+        
+        //Makes a new Queue
+        Queue outputQueue = new Queue();
+        
+        //Iterates through the instance queue
+        for (Node temp = this.head; temp != null; temp = temp.next){
+            
+            //If tweet is on date
+            if (temp.data.containsDate(date) ){
+                
+                //Add the tweet to the outputQueue
+                outputQueue.enqueue(temp.data);
+            }
+        }
+        
+        //Returns Queue
+        return outputQueue;
     }
 }
 
